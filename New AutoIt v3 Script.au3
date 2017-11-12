@@ -10,21 +10,23 @@ Local $oIE = _IECreate("https://www.amazon.com/Stainless-Electrostatic-Technolog
 Send("{f11}")
 
 Sleep(3000)
-#cs
+
 $cart = _IEGetObjById($oIE,"add-to-cart-button")
 _IEAction($cart,"click")
 
 Sleep(2000)
 
-$checkout = _IEGetObjById($oIE,"hlb-ptc-btn-native")
-_IEAction($checkout,"click")
+Local $oInputs = _IETagNameGetCollection($oIE, "a")
+For $oInput In $oInputs
+    If($oInput.className == "hucSprite s_checkout hlb-checkout-button") Then
 
-Sleep(2000)
-#ce
+_IEAction($oInput,"click")
+
+	EndIf
+Next
 
 
-
-
+#cs
 $wishlist = _IEGetObjById($oIE,"add-to-wishlist-button")
 _IEAction($wishlist,"click")
 
@@ -36,6 +38,38 @@ Sleep(2000)
 
 $continue = _IEGetObjById($oIE,"WLHUC_continue")
 _IEAction($continue,"click")
+#ce
+
+
+#cs
+;like cmt
+Local $oInputs = _IETagNameGetCollection($oIE, "div")
+Local $sTxt = ""
+For $oInput In $oInputs
+    If($oInput.className == "cr-helpful-vote-button cr-unhelpful-vote-feedback cr-unhelpful-vote-success cr-helpful-vote-error cr-helpful-vote-component") Then
+
+_IEAction($oInput,"click")
+
+		EndIf
+Next
+#ce
+
+
+#cs
+
+Local $oInputs = _IETagNameGetCollection($oIE, "li")
+For $oInput In $oInputs
+    If($oInput.className == "a-spacing-small item") Then
+
+		$posx = _IEPropertyGet($oInput,"screenx")
+		$posy = _IEPropertyGet($oInput,"screeny")
+		MouseMove($posx,$posy)
+		Sleep(2000)
+	EndIf
+Next
+MsgBox(0,0,"Xong")
+#ce
+
 
 
 

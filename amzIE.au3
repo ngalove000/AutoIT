@@ -4,7 +4,7 @@ Local $oIE = _IECreate("amazon.com")
 
 WinSetState("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more - Internet Explorer","", @SW_MAXIMIZE)
 
-#cs
+
 ;Code dang nhap
 _IELinkClickByText($oIE, "Sign in")
 Send("minhngaag@gmail.com")
@@ -12,7 +12,6 @@ Send("{enter}")
 Sleep(2000)
 Send("Ngalove000")
 Send("{enter}")
-#ce
 
 
 ;lay tieu de cua san pham theo ASIN
@@ -42,7 +41,6 @@ Sleep(3000)
 
 ;Tim kiem tu khoa va di so sanh voi tieu de san pham - neu dung thi truy cap vao - khong thi di tiep
 Local $key = "Bike locks"
-
 Local $oInputs = _IETagNameGetCollection($oIE, "input")
 Local $sTxt = ""
 For $oInput In $oInputs
@@ -58,9 +56,6 @@ Next
 
 Sleep(5000)
 _IELoadWait($oIE)
-;Local $title = "Mini Bicycle U-lock with Transit Frame Mount Bracket, Stainless Steel Keys, Electrostatic Coating, Anti Theft Technology, High Security Hardened Bike Keeper, Rust Resistance,Best Waterproof Cylinder"
-
-
 
 	Local $page
 	For $page = 1 To 9 Step 1
@@ -87,27 +82,80 @@ Sleep(3000)
 ;Share
 $mail = _IEGetObjById($oIE,"swfImage")
 _IEAction($mail,"click")
-Sleep(2000)
+Sleep(3000)
 Send("{ESC}")
 
 Sleep(2000)
 
 $fb = _IEGetObjById($oIE,"facebook")
 _IEAction($fb,"click")
-Sleep(2000)
+Sleep(4000)
 Send("!{f4}")
 
 Sleep(2000)
 
 $tw = _IEGetObjById($oIE,"twitter")
 _IEAction($tw,"click")
-Sleep(2000)
+Sleep(4000)
 Send("!{f4}")
 
 Sleep(2000)
 
 $pin = _IEGetObjById($oIE,"pinterest")
 _IEAction($pin,"click")
-Sleep(2000)
+Sleep(4000)
 Send("!{f4}")
+
+Sleep(2000)
+
+;like cmt
+Local $oInputs = _IETagNameGetCollection($oIE, "div")
+Local $sTxt = ""
+For $oInput In $oInputs
+    If($oInput.className == "cr-helpful-vote-button cr-unhelpful-vote-feedback cr-unhelpful-vote-success cr-helpful-vote-error cr-helpful-vote-component") Then
+
+_IEAction($oInput,"click")
+
+		EndIf
+Next
+
+Sleep(2000)
+
+
+;them vao wish list
+$wishlist = _IEGetObjById($oIE,"add-to-wishlist-button")
+_IEAction($wishlist,"click")
+
+Sleep(2000)
+_IEImgClick($oIE, "Wish List", "alt")
+
+_IELoadWait($oIE)
+Sleep(2000)
+
+
+$continue = _IEGetObjById($oIE,"WLHUC_continue")
+_IEAction($continue,"click")
+
+_IELoadWait($oIE)
+Sleep(3000)
+
+;them vao gio hang
+$cart = _IEGetObjById($oIE,"add-to-cart-button")
+_IEAction($cart,"click")
+
+_IELoadWait($oIE)
+Sleep(3000)
+
+Local $oInputs = _IETagNameGetCollection($oIE, "a")
+For $oInput In $oInputs
+    If($oInput.className == "hucSprite s_checkout hlb-checkout-button") Then
+
+_IEAction($oInput,"click")
+
+	EndIf
+Next
+
+Sleep(3000)
+
+MsgBox(0,0,"Xong")
 
