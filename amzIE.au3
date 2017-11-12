@@ -7,10 +7,10 @@ WinSetState("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Bo
 
 ;Code dang nhap
 _IELinkClickByText($oIE, "Sign in")
-Send("minhngaag@gmail.com")
+Send("rkzn4yhm8vwn@mail.ru")
 Send("{enter}")
 Sleep(2000)
-Send("Ngalove000")
+Send("QTtmPKk8oz")
 Send("{enter}")
 
 
