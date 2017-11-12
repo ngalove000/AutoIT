@@ -73,6 +73,9 @@ _IELoadWait($oIE)
 	Sleep(3000)
 	Next
 
+
+
+;To den tieu de
 $title = $oIE.document.getElementById('productTitle')
 $posx = _IEPropertyGet($title,"screenx")
 $posy = _IEPropertyGet($title,"screeny")
@@ -80,6 +83,8 @@ MouseClick("main",$posx+20,$posy+20,3)
 
 Sleep(3000)
 
+
+;Share
 $mail = _IEGetObjById($oIE,"swfImage")
 _IEAction($mail,"click")
 Sleep(2000)
