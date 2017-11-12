@@ -10,32 +10,32 @@ Local $oIE = _IECreate("https://www.amazon.com/Stainless-Electrostatic-Technolog
 Send("{f11}")
 
 Sleep(3000)
-
-$mail = _IEGetObjById($oIE,"swfImage")
-_IEAction($mail,"click")
-Sleep(2000)
-Send("{ESC}")
+#cs
+$cart = _IEGetObjById($oIE,"add-to-cart-button")
+_IEAction($cart,"click")
 
 Sleep(2000)
 
-$fb = _IEGetObjById($oIE,"facebook")
-_IEAction($fb,"click")
+$checkout = _IEGetObjById($oIE,"hlb-ptc-btn-native")
+_IEAction($checkout,"click")
+
 Sleep(2000)
-Send("!{f4}")
+#ce
+
+
+
+
+$wishlist = _IEGetObjById($oIE,"add-to-wishlist-button")
+_IEAction($wishlist,"click")
+
+Sleep(2000)
+_IEImgClick($oIE, "Wish List", "alt")
 
 Sleep(2000)
 
-$tw = _IEGetObjById($oIE,"twitter")
-_IEAction($tw,"click")
-Sleep(2000)
-Send("!{f4}")
 
-Sleep(2000)
-
-$pin = _IEGetObjById($oIE,"pinterest")
-_IEAction($pin,"click")
-Sleep(2000)
-Send("!{f4}")
+$continue = _IEGetObjById($oIE,"WLHUC_continue")
+_IEAction($continue,"click")
 
 
 
