@@ -11,6 +11,24 @@ Send("{f11}")
 
 Sleep(3000)
 
+
+;like cmt
+Local $oInputs = _IETagNameGetCollection($oIE, "div")
+For $oInput In $oInputs
+    If($oInput.className == "cr-helpful-vote-button cr-unhelpful-vote-feedback cr-unhelpful-vote-success cr-helpful-vote-error cr-helpful-vote-component") Then
+
+_IEAction($oInput,"scrollintoview")
+Sleep(3000)
+_IEAction($oInput,"click")
+
+		EndIf
+Next
+
+Sleep(2000)
+MsgBox(0,0,"Xong")
+
+#cs
+;gio hang
 $cart = _IEGetObjById($oIE,"add-to-cart-button")
 _IEAction($cart,"click")
 
@@ -24,7 +42,7 @@ _IEAction($oInput,"click")
 
 	EndIf
 Next
-
+#ce
 
 #cs
 $wishlist = _IEGetObjById($oIE,"add-to-wishlist-button")
@@ -41,18 +59,6 @@ _IEAction($continue,"click")
 #ce
 
 
-#cs
-;like cmt
-Local $oInputs = _IETagNameGetCollection($oIE, "div")
-Local $sTxt = ""
-For $oInput In $oInputs
-    If($oInput.className == "cr-helpful-vote-button cr-unhelpful-vote-feedback cr-unhelpful-vote-success cr-helpful-vote-error cr-helpful-vote-component") Then
-
-_IEAction($oInput,"click")
-
-		EndIf
-Next
-#ce
 
 
 #cs

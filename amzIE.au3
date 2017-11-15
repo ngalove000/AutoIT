@@ -7,10 +7,10 @@ WinSetState("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Bo
 
 ;Code dang nhap
 _IELinkClickByText($oIE, "Sign in")
-Send("rkzn4yhm8vwn@mail.ru")
+Send("minhngaag@gmail.com")
 Send("{enter}")
 Sleep(2000)
-Send("QTtmPKk8oz")
+Send("Ngalove000")
 Send("{enter}")
 
 
@@ -113,10 +113,10 @@ Local $oInputs = _IETagNameGetCollection($oIE, "div")
 Local $sTxt = ""
 For $oInput In $oInputs
     If($oInput.className == "cr-helpful-vote-button cr-unhelpful-vote-feedback cr-unhelpful-vote-success cr-helpful-vote-error cr-helpful-vote-component") Then
-
-_IEAction($oInput,"click")
-
-		EndIf
+	_IEAction($oInput,"scrollintoview")
+	Sleep(3000)
+	_IEAction($oInput,"click")
+	EndIf
 Next
 
 Sleep(2000)
@@ -124,6 +124,8 @@ Sleep(2000)
 
 ;them vao wish list
 $wishlist = _IEGetObjById($oIE,"add-to-wishlist-button")
+_IEAction($wishlist,"scrollintoview")
+Sleep(3000)
 _IEAction($wishlist,"click")
 
 Sleep(2000)
